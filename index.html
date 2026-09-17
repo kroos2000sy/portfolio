@@ -252,7 +252,14 @@
   }
   .bezel .chrome .dots { display: flex; gap: 5px; }
   .bezel .chrome .dots span { width: 7px; height: 7px; border-radius: 50%; background: var(--border-strong); }
-  .bezel img { display: block; width: 100%; height: auto; }
+  .bezel { overflow: hidden; }
+  .bezel img { display: block; width: 100%; object-fit: cover; object-position: top center; }
+  .panel-card .bezel img { height: 230px; }
+  .project-page .bezel img { height: 400px; }
+  @media (max-width: 620px) {
+    .panel-card .bezel img { height: 170px; }
+    .project-page .bezel img { height: 260px; }
+  }
   .panel-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 12px; }
   .panel-body h3 { font-family: "Instrument Serif", Georgia, serif; font-size: 1.5rem; font-weight: 400; }
   .panel-body > p.desc { color: var(--ink-2); margin: 0; max-width: 60ch; }
