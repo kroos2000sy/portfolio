@@ -71,6 +71,48 @@
     </div>
   </div>
 
+  <div class="diagram-wrap" data-reveal>
+    <h2>How the retake loop works</h2>
+    <div class="diagram-scroll">
+    <svg class="diagram" viewBox="0 0 720 225" role="img" aria-label="Diagram: the assessment form submits to the API, which writes to node:sqlite, which feeds the trend chart. A loop arrow shows retaking the assessment every quarter.">
+      <defs>
+        <marker id="arrow-dt" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-3)"/>
+        </marker>
+        <marker id="arrow-dt-loop" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="var(--teal)"/>
+        </marker>
+      </defs>
+
+      <path class="diagram-line" pathLength="1" marker-end="url(#arrow-dt)" d="M160,98 L205,98"/>
+      <path class="diagram-line" pathLength="1" marker-end="url(#arrow-dt)" d="M345,98 L390,98"/>
+      <path class="diagram-line" pathLength="1" marker-end="url(#arrow-dt)" d="M540,98 L585,98"/>
+      <path class="diagram-line loop-line" pathLength="1" marker-end="url(#arrow-dt-loop)" d="M647,126 C647,175 85,175 85,126"/>
+
+      <g class="diagram-node">
+        <rect class="node-box" x="10" y="70" width="150" height="56" rx="10"/>
+        <text class="node-title" x="85" y="103" text-anchor="middle">Assessment form</text>
+      </g>
+      <g class="diagram-node">
+        <rect class="node-box" x="205" y="70" width="140" height="56" rx="10"/>
+        <text class="node-title" x="275" y="103" text-anchor="middle">API · JWT auth</text>
+      </g>
+      <g class="diagram-node">
+        <rect class="node-box" x="390" y="70" width="150" height="56" rx="10"/>
+        <text class="node-title" x="465" y="98" text-anchor="middle">node:sqlite</text>
+        <text class="node-sub" x="465" y="114" text-anchor="middle">one row per quarter</text>
+      </g>
+      <g class="diagram-node">
+        <rect class="node-box accent-box" x="585" y="70" width="125" height="56" rx="10"/>
+        <text class="node-title" x="647" y="98" text-anchor="middle">Trend chart</text>
+        <text class="node-sub" x="647" y="114" text-anchor="middle">2.00 → 3.63</text>
+      </g>
+
+      <text class="diagram-caption" x="366" y="203" text-anchor="middle">retake next quarter</text>
+    </svg>
+    </div>
+  </div>
+
   <div class="detail-media" data-reveal>
     <div class="frame-bar mono">dt-maturity.app · assessment result</div>
     <img src="../assets/img/dt-maturity-hero.webp" width="1400" height="2022" alt="Maturity assessment dashboard showing an overall score of 3.57, a radar chart across six dimensions, and two focus recommendations." loading="eager" decoding="async">

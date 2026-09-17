@@ -70,6 +70,52 @@
     </div>
   </div>
 
+  <div class="diagram-wrap" data-reveal>
+    <h2>How the SSRF-hardened scan works</h2>
+    <div class="diagram-scroll">
+    <svg class="diagram" viewBox="0 0 760 280" role="img" aria-label="Diagram: a pasted URL has its hostname resolved to an IP once, that IP is validated against private and cloud-metadata ranges, the scanner connects directly to the validated IP with the original hostname only in TLS SNI and the Host header, and the result is scored and stored keyed by domain.">
+      <defs>
+        <marker id="arrow-sec" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-3)"/>
+        </marker>
+        <marker id="arrow-sec-accent" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="var(--accent)"/>
+        </marker>
+      </defs>
+
+      <path class="diagram-line" pathLength="1" marker-end="url(#arrow-sec)" d="M175,92 L190,92"/>
+      <path class="diagram-line" pathLength="1" marker-end="url(#arrow-sec)" d="M355,92 L370,92"/>
+      <path class="diagram-line accent-line" pathLength="1" marker-end="url(#arrow-sec-accent)" d="M535,92 L550,92"/>
+      <path class="diagram-line" pathLength="1" marker-end="url(#arrow-sec)" d="M632,124 C632,168 380,156 380,200"/>
+
+      <g class="diagram-node">
+        <rect class="node-box" x="10" y="60" width="165" height="64" rx="10"/>
+        <text class="node-title" x="92" y="97" text-anchor="middle">Paste a URL</text>
+      </g>
+      <g class="diagram-node">
+        <rect class="node-box" x="190" y="60" width="165" height="64" rx="10"/>
+        <text class="node-title" x="272" y="88" text-anchor="middle">Resolve host → IP</text>
+        <text class="node-sub" x="272" y="106" text-anchor="middle">once, not re-resolved</text>
+      </g>
+      <g class="diagram-node">
+        <rect class="node-box" x="370" y="60" width="165" height="64" rx="10"/>
+        <text class="node-title" x="452" y="88" text-anchor="middle">Validate the IP</text>
+        <text class="node-sub" x="452" y="106" text-anchor="middle">reject private / metadata</text>
+      </g>
+      <g class="diagram-node">
+        <rect class="node-box accent-box" x="550" y="60" width="165" height="64" rx="10"/>
+        <text class="node-title" x="632" y="88" text-anchor="middle">Connect over TLS</text>
+        <text class="node-sub" x="632" y="106" text-anchor="middle">SNI = original hostname</text>
+      </g>
+      <g class="diagram-node">
+        <rect class="node-box" x="260" y="200" width="240" height="60" rx="10"/>
+        <text class="node-title" x="380" y="228" text-anchor="middle">Score and store</text>
+        <text class="node-sub" x="380" y="246" text-anchor="middle">keyed by domain, no login</text>
+      </g>
+    </svg>
+    </div>
+  </div>
+
   <div class="detail-media" data-reveal>
     <div class="frame-bar mono">security-auditor.app · scan result</div>
     <img src="../assets/img/security-auditor-hero.webp" width="1160" height="1360" alt="Security scan result for github.com showing a score of 4.34, graded Hardened, with a radar chart across four signal groups." loading="eager" decoding="async">

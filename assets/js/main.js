@@ -2,6 +2,7 @@
   "use strict";
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var pointerFine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   /* ---------- scroll progress ---------- */
   var progressFill = document.getElementById("progressFill");
@@ -92,6 +93,31 @@
       el.classList.add("in-view");
       el.querySelectorAll("[data-count]").forEach(animateCount);
     });
+  }, 900);
+
+  /* ---------- subtle tilt on project cards ---------- */
+  if (pointerFine && !reduceMotion) {
+    document.querySelectorAll(".project-card").forEach(function (card) {
+      card.addEventListener("mouseenter", function () {
+        card.classList.add("tilting");
+      });
+      card.addEventListener("mousemove", function (e) {
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform =
+          "perspective(1000px) rotateY(" + (px * 2.2).toFixed(2) + "deg) rotateX(" + (py * -2.2).toFixed(2) + "deg) translateY(-2px)";
+      });
+      card.addEventListener("mouseleave", function () {
+        card.classList.remove("tilting");
+        card.style.transform = "";
+      });
+    });
+  }
+
+  /* ---------- hero glance-card count-up ---------- */
+  window.setTimeout(function () {
+    document.querySelectorAll(".glance-card [data-count]").forEach(animateCount);
   }, 900);
 
   /* ---------- image skeleton to loaded fade ---------- */
