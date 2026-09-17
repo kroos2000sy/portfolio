@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<title>Digital Transformation Maturity Tool | Yousef Hassna</title>
+<meta name="description" content="A full-stack digital maturity assessment tool with persistence and trend tracking, built in English and Arabic with real RTL layout.">
+<link rel="canonical" href="https://kroos2000sy.github.io/portfolio/projects/dt-maturity-tool.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Digital Transformation Maturity Tool | Yousef Hassna">
+<meta property="og:description" content="A full-stack digital maturity assessment tool with persistence and trend tracking, built in English and Arabic with real RTL layout.">
+<meta property="og:url" content="https://kroos2000sy.github.io/portfolio/projects/dt-maturity-tool.html">
+<meta property="og:image" content="https://kroos2000sy.github.io/portfolio/assets/img/dt-maturity-hero.webp">
+
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="alternate icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html#top">
+      <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="8" fill="var(--accent)"/>
+        <text x="16" y="21.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="14" letter-spacing="-0.5" fill="var(--accent-ink)">YH</text>
+      </svg>
+      <span>Yousef Hassna</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.3M12 19.2v2.3M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.3M19.2 12h2.3M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<div class="wrap">
+
+  <a class="back-link" href="../index.html#projects">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4"/></svg>
+    Back to projects
+  </a>
+
+  <div class="project-hero" data-reveal>
+    <h1>Digital Transformation Maturity Tool</h1>
+    <p class="desc">Most digital-maturity assessments are a one-time survey: a snapshot an organization takes once and files away. This app treats the assessment as something to revisit. Retake it every quarter and see whether the initiatives you funded actually moved the score, dimension by dimension.</p>
+    <div class="tag-row">
+      <span class="tag">Express</span>
+      <span class="tag">node:sqlite</span>
+      <span class="tag">JWT auth</span>
+      <span class="tag">Chart.js</span>
+      <span class="tag">Tailwind CSS</span>
+      <span class="tag">English / العربية · RTL</span>
+    </div>
+  </div>
+
+  <div class="detail-media" data-reveal>
+    <div class="frame-bar mono">dt-maturity.app · assessment result</div>
+    <img src="../assets/img/dt-maturity-hero.webp" width="1400" height="2022" alt="Maturity assessment dashboard showing an overall score of 3.57, a radar chart across six dimensions, and two focus recommendations." loading="eager" decoding="async">
+  </div>
+
+  <div class="detail-media" data-reveal>
+    <div class="frame-bar mono">dt-maturity.app · trend view</div>
+    <img src="../assets/img/dt-maturity-trend.webp" width="1400" height="1120" alt="Line chart of maturity score across three quarterly assessments, rising from 2.00 to 3.63, with a history table below it." loading="lazy" decoding="async">
+  </div>
+
+  <div class="decisions" data-reveal>
+    <div class="decision">
+      <div class="label">zero build tools</div>
+      <div class="body"><strong>node:sqlite over better-sqlite3.</strong> The native alternative needs about 6GB of build tools before anyone can even run the project. Node's built-in SQLite module needed none: <code>npm install &amp;&amp; npm start</code> was worth more than the marginal performance.</div>
+    </div>
+    <div class="decision">
+      <div class="label">real RTL</div>
+      <div class="body"><strong>Logical properties, not translated strings.</strong> Layout uses <code>start</code>/<code>end</code> instead of hardcoded <code>left</code>/<code>right</code>, so switching to Arabic actually mirrors navigation, forms, and the Likert scale, not just the copy.</div>
+    </div>
+    <div class="decision">
+      <div class="label">caught in testing</div>
+      <div class="body"><strong>The trend chart's time axis stays left to right even in RTL.</strong> An early version mirrored it for consistency, but a real usability pass showed a genuine improvement, 2.00 to 3.63, reading as decline once the axis reversed. Fixed by keeping time strictly chronological, regardless of text direction.</div>
+    </div>
+  </div>
+
+  <div class="detail-foot btn-row" data-reveal>
+    <a class="btn primary" href="https://github.com/kroos2000sy/digital-maturity-assessment" target="_blank" rel="noopener">View source on GitHub</a>
+    <a class="btn" href="https://github.com/kroos2000sy/digital-maturity-assessment/blob/master/CASE_STUDY.md" target="_blank" rel="noopener">Read the full case study</a>
+  </div>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-meta">
+      <span>Yousef Hassna</span>
+      <span>Damascus, Syria · © 2026</span>
+    </div>
+    <div class="footer-links">
+      <a class="icon-btn" href="https://github.com/kroos2000sy" target="_blank" rel="noopener" aria-label="GitHub profile">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+      </a>
+      <a class="icon-btn" href="mailto:yousefpes1@gmail.com" aria-label="Email Yousef">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="1.6"/><path d="m3 5.5 7 5.5 7-5.5"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<button class="icon-btn back-to-top" id="backToTop" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 15V5M5 9l5-5 5 5"/></svg>
+</button>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
