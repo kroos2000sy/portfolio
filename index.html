@@ -171,6 +171,44 @@
             </a>
           </div>
         </div>
+        <div class="diagram-wrap" data-reveal>
+          <h2>How the retake loop works</h2>
+          <div class="diagram-scroll">
+          <svg class="diagram" viewBox="0 0 720 225" role="img" aria-label="Diagram: the assessment form submits to the API, which writes to node:sqlite, which feeds the trend chart. A loop arrow shows retaking the assessment every quarter.">
+            <defs>
+              <marker id="arrow-dt-home" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-3)"/>
+              </marker>
+              <marker id="arrow-dt-loop-home" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 Z" fill="var(--teal)"/>
+              </marker>
+            </defs>
+            <path class="diagram-line" pathLength="1" marker-end="url(#arrow-dt-home)" d="M160,98 L205,98"/>
+            <path class="diagram-line" pathLength="1" marker-end="url(#arrow-dt-home)" d="M345,98 L390,98"/>
+            <path class="diagram-line" pathLength="1" marker-end="url(#arrow-dt-home)" d="M540,98 L585,98"/>
+            <path class="diagram-line loop-line" pathLength="1" marker-end="url(#arrow-dt-loop-home)" d="M647,126 C647,175 85,175 85,126"/>
+            <g class="diagram-node">
+              <rect class="node-box" x="10" y="70" width="150" height="56" rx="10"/>
+              <text class="node-title" x="85" y="103" text-anchor="middle">Assessment form</text>
+            </g>
+            <g class="diagram-node">
+              <rect class="node-box" x="205" y="70" width="140" height="56" rx="10"/>
+              <text class="node-title" x="275" y="103" text-anchor="middle">API · JWT auth</text>
+            </g>
+            <g class="diagram-node">
+              <rect class="node-box" x="390" y="70" width="150" height="56" rx="10"/>
+              <text class="node-title" x="465" y="98" text-anchor="middle">node:sqlite</text>
+              <text class="node-sub" x="465" y="114" text-anchor="middle">one row per quarter</text>
+            </g>
+            <g class="diagram-node">
+              <rect class="node-box accent-box" x="585" y="70" width="125" height="56" rx="10"/>
+              <text class="node-title" x="647" y="98" text-anchor="middle">Trend chart</text>
+              <text class="node-sub" x="647" y="114" text-anchor="middle">2.00 → 3.63</text>
+            </g>
+            <text class="diagram-caption" x="366" y="203" text-anchor="middle">retake next quarter</text>
+          </svg>
+          </div>
+        </div>
       </article>
 
       <article class="project-card" data-reveal>
@@ -197,6 +235,49 @@
             </a>
           </div>
         </div>
+        <div class="diagram-wrap" data-reveal>
+          <h2>How the SSRF-hardened scan works</h2>
+          <div class="diagram-scroll">
+          <svg class="diagram" viewBox="0 0 760 280" role="img" aria-label="Diagram: a pasted URL has its hostname resolved to an IP once, that IP is validated against private and cloud-metadata ranges, the scanner connects directly to the validated IP with the original hostname only in TLS SNI and the Host header, and the result is scored and stored keyed by domain.">
+            <defs>
+              <marker id="arrow-sec-home" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 Z" fill="var(--ink-3)"/>
+              </marker>
+              <marker id="arrow-sec-accent-home" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 Z" fill="var(--accent)"/>
+              </marker>
+            </defs>
+            <path class="diagram-line" pathLength="1" marker-end="url(#arrow-sec-home)" d="M175,92 L190,92"/>
+            <path class="diagram-line" pathLength="1" marker-end="url(#arrow-sec-home)" d="M355,92 L370,92"/>
+            <path class="diagram-line accent-line" pathLength="1" marker-end="url(#arrow-sec-accent-home)" d="M535,92 L550,92"/>
+            <path class="diagram-line" pathLength="1" marker-end="url(#arrow-sec-home)" d="M632,124 C632,168 380,156 380,200"/>
+            <g class="diagram-node">
+              <rect class="node-box" x="10" y="60" width="165" height="64" rx="10"/>
+              <text class="node-title" x="92" y="97" text-anchor="middle">Paste a URL</text>
+            </g>
+            <g class="diagram-node">
+              <rect class="node-box" x="190" y="60" width="165" height="64" rx="10"/>
+              <text class="node-title" x="272" y="88" text-anchor="middle">Resolve host → IP</text>
+              <text class="node-sub" x="272" y="106" text-anchor="middle">once, not re-resolved</text>
+            </g>
+            <g class="diagram-node">
+              <rect class="node-box" x="370" y="60" width="165" height="64" rx="10"/>
+              <text class="node-title" x="452" y="88" text-anchor="middle">Validate the IP</text>
+              <text class="node-sub" x="452" y="106" text-anchor="middle">reject private / metadata</text>
+            </g>
+            <g class="diagram-node">
+              <rect class="node-box accent-box" x="550" y="60" width="165" height="64" rx="10"/>
+              <text class="node-title" x="632" y="88" text-anchor="middle">Connect over TLS</text>
+              <text class="node-sub" x="632" y="106" text-anchor="middle">SNI = original hostname</text>
+            </g>
+            <g class="diagram-node">
+              <rect class="node-box" x="260" y="200" width="240" height="60" rx="10"/>
+              <text class="node-title" x="380" y="228" text-anchor="middle">Score and store</text>
+              <text class="node-sub" x="380" y="246" text-anchor="middle">keyed by domain, no login</text>
+            </g>
+          </svg>
+          </div>
+        </div>
       </article>
 
       <article class="project-card" data-reveal>
@@ -221,6 +302,37 @@
               Read the case study
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
             </a>
+          </div>
+        </div>
+        <div class="diagram-wrap" data-reveal>
+          <h2>Who owns the state</h2>
+          <div class="diagram-scroll">
+          <svg class="diagram" viewBox="0 0 720 260" role="img" aria-label="Diagram: the host screen owns the room, question order, and timer, connected over Socket.io to three player phones, each of which only sends an answer event.">
+            <path class="diagram-line accent-line" pathLength="1" d="M330,75 L188,170"/>
+            <path class="diagram-line accent-line" pathLength="1" d="M360,75 L360,170"/>
+            <path class="diagram-line accent-line" pathLength="1" d="M390,75 L532,170"/>
+            <g class="diagram-node">
+              <rect class="node-box accent-box" x="285" y="15" width="150" height="60" rx="10"/>
+              <text class="node-title" x="360" y="42" text-anchor="middle">Host screen</text>
+              <text class="node-sub" x="360" y="60" text-anchor="middle">room · order · timer</text>
+            </g>
+            <g class="diagram-node">
+              <rect class="node-box" x="105" y="170" width="150" height="56" rx="10"/>
+              <text class="node-title" x="180" y="196" text-anchor="middle">Player phone</text>
+              <text class="node-sub" x="180" y="213" text-anchor="middle">sends answer only</text>
+            </g>
+            <g class="diagram-node">
+              <rect class="node-box" x="285" y="170" width="150" height="56" rx="10"/>
+              <text class="node-title" x="360" y="196" text-anchor="middle">Player phone</text>
+              <text class="node-sub" x="360" y="213" text-anchor="middle">sends answer only</text>
+            </g>
+            <g class="diagram-node">
+              <rect class="node-box" x="465" y="170" width="150" height="56" rx="10"/>
+              <text class="node-title" x="540" y="196" text-anchor="middle">Player phone</text>
+              <text class="node-sub" x="540" y="213" text-anchor="middle">sends answer only</text>
+            </g>
+            <text class="diagram-caption" x="360" y="250" text-anchor="middle">joins by room code or QR scan, no login</text>
+          </svg>
           </div>
         </div>
       </article>

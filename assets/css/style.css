@@ -685,6 +685,9 @@ section[id] {
 .project-card {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  grid-template-areas:
+    "media body"
+    "diagram diagram";
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: var(--surface);
@@ -705,19 +708,23 @@ section[id] {
 
 .project-card:nth-child(even) {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  grid-template-areas:
+    "body media"
+    "diagram diagram";
 }
 
-.project-card:nth-child(even) .project-media {
-  order: 2;
-}
+.project-media { grid-area: media; }
+.project-body { grid-area: body; }
+.project-card .diagram-wrap { grid-area: diagram; }
 
 @media (max-width: 780px) {
   .project-card,
   .project-card:nth-child(even) {
     grid-template-columns: 1fr;
-  }
-  .project-card:nth-child(even) .project-media {
-    order: 0;
+    grid-template-areas:
+      "media"
+      "body"
+      "diagram";
   }
 }
 
@@ -813,6 +820,21 @@ section[id] {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--ink-3);
+}
+
+.project-card .diagram-wrap {
+  border: none;
+  border-top: 1px solid var(--border);
+  border-radius: 0;
+  background: none;
+  padding: var(--space-6) var(--space-8) var(--space-8);
+  margin: 0;
+}
+
+@media (max-width: 780px) {
+  .project-card .diagram-wrap {
+    padding: var(--space-4);
+  }
 }
 
 .project-foot {
